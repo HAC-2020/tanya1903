@@ -1,5 +1,5 @@
 import import_ipynb
-import covid_crusher
+import jeu_et_regal
 import sys
 from PyQt5 import QtGui , QtCore
 from PyQt5 import QtWidgets
@@ -8,17 +8,17 @@ from PyQt5 import QtWidgets
 class Example(QtWidgets.QMainWindow):
     def __init__(self):
         super(Example, self).__init__()
-        self.game = jeu_et_regle.GrilleJeu()
+        self.game = jeu_et_regal.GrilleJeu()
         self.btn = [[QtWidgets.QPushButton('', self)
                     for j in range(len(self.game.grille))]
                     for i in range(len(self.game.grille))]             
-        self.icone_dic = {1 : 'Users\HP\Desktop\icones\1.png',
-                          2 : 'Users\HP\Desktop\icones\2.png',
-                          3 : 'Users\HP\Desktop\icones\3.png',
-                          4 : 'Users\HP\Desktop\icones\4.png',
-                          5 : 'Users\HP\Desktop\icones\5.png',
-                          6 : 'Users\HP\Desktop\icones\6.png',
-                          7 : 'Users\HP\Desktop\icones\7.png',
+        self.icone_dic = {1 : 'icones/1.png',
+                          2 : 'icones/2.png',
+                          3 : 'icones/3.png',
+                          4 : 'icones/4.png',
+                          5 : 'icones/5.png',
+                          6 : 'icones/6.png',
+                          7 : 'icones/7.png',
                           } 
         self.initUI()
         self.click = []
@@ -77,12 +77,15 @@ class Example(QtWidgets.QMainWindow):
         
         # window
         self.setGeometry(220, 200, 590, 500)
-        self.setWindowTitle('covid crush')
+        self.setWindowTitle('covid_crush')
         self.show()
         
     def Reset(self):
-        self.game = jeu_et_regle.GrilleJeu()
+        self.game = jeu_et_regal.GrilleJeu()
         self.refresh_grille()
+        
+        self.statusBar().showMessage ('Corona will be FINISHED soon do not worry be RELAXED')
+        #self.statusBar().showMessage ('STAY HOME STAY SAFE.')
 
         
     def buttonClicked(self):
@@ -93,7 +96,7 @@ class Example(QtWidgets.QMainWindow):
             self.set_click(index)
         else:
             self.statusBar().showMessage(
-            'You have completed your game, your scor is' + 
+            'you have finished your game' + 
             str(self.game.score))
         
     def set_click(self,index):
